@@ -20,7 +20,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "http://127.0.0.1:5173"
+        "http://127.0.0.1:5173",
+        "https://beauty-salon-web-application-3jx4.vercel.app/"
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -43,7 +44,6 @@ def create_client(
     current_user: User = Depends(get_current_user)
 ):
     return crud.create_client(db, client, user_id=current_user.id)
-
 
 
 @app.get("/clients/", response_model=list[schemas.Client])
