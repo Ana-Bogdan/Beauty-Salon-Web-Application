@@ -11,7 +11,7 @@ export function useConnectionStatus() {
 
         async function checkServer() {
             try {
-                const res = await fetch("http://127.0.0.1:8000/health-check");
+                const res = await fetch("https://beauty-salon-web-application.onrender.com/health-check");
                 setServerUp(res.ok);
             } catch {
                 setServerUp(false);

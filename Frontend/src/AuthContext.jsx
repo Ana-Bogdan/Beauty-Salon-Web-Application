@@ -27,7 +27,7 @@ export function AuthProvider({ children }) {
         form.append("username", email);
         form.append("password", password);
 
-        const res = await fetch("http://127.0.0.1:8000/token", {
+        const res = await fetch("https://beauty-salon-web-application.onrender.com/token", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: form.toString()
@@ -43,7 +43,7 @@ export function AuthProvider({ children }) {
     };
 
     const register = async (email, password) => {
-        const res = await fetch("http://127.0.0.1:8000/register", {
+        const res = await fetch("https://beauty-salon-web-application.onrender.com/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password })

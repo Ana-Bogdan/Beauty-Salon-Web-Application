@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { useConnectionStatus } from './hooks/useConnectionStatus';
 
 const AppointmentsContext = createContext();
-const API_URL = 'http://127.0.0.1:8000/appointments/';
+const API_URL = 'https://beauty-salon-web-application.onrender.com/appointments/';
 
 let queue = JSON.parse(localStorage.getItem("pendingOps") || "[]");
 function saveQueue() {

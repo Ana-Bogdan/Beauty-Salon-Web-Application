@@ -38,7 +38,7 @@ export default function BookAppointment() {
 
         const token = localStorage.getItem("token");
 
-        const response = await fetch('http://127.0.0.1:8000/clients/', {
+        const response = await fetch('https://beauty-salon-web-application.onrender.com/clients/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ export default function BookAppointment() {
     useEffect(() => {
         const token = localStorage.getItem("token");
 
-        fetch('http://127.0.0.1:8000/clients/', {
+        fetch('https://beauty-salon-web-application.onrender.com/clients/', {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
