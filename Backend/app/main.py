@@ -1,7 +1,6 @@
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
-from fastapi.middleware.cors import CORSMiddleware
 from . import models, schemas, crud, dependencies, auth
 from .database import SessionLocal, engine, Base
 from typing import Optional
@@ -9,20 +8,17 @@ from datetime import date
 from .auth import get_current_user
 from .models import User
 from .auth import SECRET_KEY
+from fastapi.middleware.cors import CORSMiddleware
 print("MAIN SECRET_KEY:", SECRET_KEY)  # Debug line
 
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-# Allow frontend connection
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "https://beauty-salon-web-application-3jx4.vercel.app/"
-    ],
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
