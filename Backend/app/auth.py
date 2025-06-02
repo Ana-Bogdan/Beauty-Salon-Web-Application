@@ -17,7 +17,7 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 SECRET_KEY = "supersecure_fixed_key_that_will_not_change"
 ALGORITHM = "HS256"
 
-print("AUTH SECRET_KEY:", SECRET_KEY)  # ✅ Debug line, you can remove later
+print("AUTH SECRET_KEY:", SECRET_KEY)
 
 
 def hash_password(password: str):

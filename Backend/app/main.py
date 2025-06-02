@@ -96,7 +96,7 @@ def read_appointments(
     date_filter: Optional[date] = None,
     sort_by: Optional[str] = "date",
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)  # ✅ get current user
+    current_user: User = Depends(get_current_user)
 ):
     print("✅ /appointments/ accessed by:", current_user.email, "| role:", current_user.role)
     return crud.get_appointments(db, skip=skip, limit=limit, date_filter=date_filter, sort_by=sort_by, user=current_user)

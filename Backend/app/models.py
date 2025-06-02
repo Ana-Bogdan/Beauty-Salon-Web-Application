@@ -40,7 +40,7 @@ class Appointment(Base):
     time = Column(Time)
     service = Column(String)
 
-    created_by = Column(Integer, ForeignKey("users.id"))  # 👈 who booked it
+    created_by = Column(Integer, ForeignKey("users.id"))
     client = relationship("Client", back_populates="appointments")
     creator = relationship("User", back_populates="appointments_created")
 
