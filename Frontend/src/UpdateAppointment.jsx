@@ -9,14 +9,14 @@ export default function UpdateAppointment() {
     const { getAppointmentById, updateAppointment } = useAppointments();
 
     const [formData, setFormData] = useState(null);
-    const [appointment, setAppointment] = useState(null); // ✅ added for client info
+    const [appointment, setAppointment] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchData() {
             try {
                 const data = await getAppointmentById(id);
-                setAppointment(data); // ✅ store full appointment
+                setAppointment(data);
                 setFormData({
                     date: data.date,
                     time: data.time,
@@ -51,7 +51,7 @@ export default function UpdateAppointment() {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // ✅ prevent browser reload
+        e.preventDefault();
 
         const selectedDate = new Date(formData.date);
         const today = new Date();

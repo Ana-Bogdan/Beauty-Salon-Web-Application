@@ -45,7 +45,7 @@ async function syncQueued(setAppointments) {
 
 
 async function fetchAppointments(setAppointments, skip = 0, limit = 100, dateFilter = '', sortBy = '') {
-    const token = localStorage.getItem("token"); // ✅ Get the JWT token
+    const token = localStorage.getItem("token");
 
     let url = API_URL + `?skip=${skip}&limit=${limit}`;
     const params = [];
@@ -56,12 +56,12 @@ async function fetchAppointments(setAppointments, skip = 0, limit = 100, dateFil
 
     const response = await fetch(url, {
         headers: {
-            "Authorization": `Bearer ${token}` // ✅ Add the token to the request
+            "Authorization": `Bearer ${token}`
         }
     });
 
     if (!response.ok) {
-        console.error("❌ Failed to fetch appointments:", response.status);
+        console.error("Failed to fetch appointments:", response.status);
         throw new Error("Unauthorized or fetch failed");
     }
 
@@ -100,11 +100,11 @@ export function AppointmentsProvider({ children }) {
 
         const token = localStorage.getItem("token");
 
-        console.log("📦 Sending appointment:", appointment);
-        console.log("🔐 Using token:", token);
+        console.log("Sending appointment:", appointment);
+        console.log("Using token:", token);
 
         if (!token) {
-            alert("❌ No token found! Please log in again.");
+            alert("No token found! Please log in again.");
             return;
         }
 
@@ -118,18 +118,18 @@ export function AppointmentsProvider({ children }) {
                 body: JSON.stringify(appointment),
             });
 
-            console.log("📡 Response status:", res.status);
+            console.log("Response status:", res.status);
 
             if (!res.ok) {
                 const errorData = await res.json().catch(() => ({}));
-                console.error("❌ Failed to add appointment:", errorData);
+                console.error("Failed to add appointment:", errorData);
                 alert("Failed to add appointment. Status: " + res.status);
                 return;
             }
 
             fetchAppointments(setAppointments);
         } catch (error) {
-            console.error("❌ Fetch error:", error);
+            console.error("Fetch error:", error);
             alert("Network error while adding appointment.");
         }
     };
